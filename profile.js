@@ -4,7 +4,7 @@ import {
   signOut, 
   updatePassword 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, query, where, onSnapshot, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, query, where, onSnapshot, doc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const securityToggle = document.getElementById('securityToggle');
   const securityContent = document.getElementById('securityContent');
   const dropdownArrow = document.getElementById('dropdownArrow');
+  const planStatusInput = document.getElementById('currentPlanStatus');
+  const upgradeBtn = document.getElementById('upgradeBtn');
+  const subscriptionToggle = document.getElementById('subscriptionToggle');
+  const subscriptionContent = document.getElementById('subscriptionContent');
+  const subscriptionArrow = document.getElementById('subscriptionArrow');
 
   // Security Settings Toggle
   let isSecurityOpen = false;
@@ -222,6 +227,56 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  if (upgradeBtn) {
+    upgradeBtn.addEventListener('click', () => {
+      window.location.href = 'payment.html';
+    });
+  }
+
+  if (subscriptionToggle && subscriptionContent && subscriptionArrow) {
+    let isSubscriptionOpen = false;
+    subscriptionToggle.addEventListener('click', () => {
+      isSubscriptionOpen = !isSubscriptionOpen;
+      if (isSubscriptionOpen) {
+        subscriptionContent.style.maxHeight = '500px';
+        subscriptionContent.style.opacity = '1';
+        subscriptionArrow.style.transform = 'rotate(0deg)';
+      } else {
+        subscriptionContent.style.maxHeight = '0px';
+        subscriptionContent.style.opacity = '0';
+        subscriptionArrow.style.transform = 'rotate(-90deg)';
+      }
+    });
+  }
+
+  async function loadSubscriptionStatus(uid) {
+    try {
+      const plansSnapshot = await getDocs(query(collection(db, 'plans'), where('userId', '==', uid)));
+      const usedPlans = plansSnapshot.size;
+      if (planStatusInput) {
+        if (usedPlans === 0) {
+          planStatusInput.value = 'Free plan available — generate your first plan now.';
+        } else if (usedPlans === 1) {
+          planStatusInput.value = 'Free plan used. Upgrade to continue generating more plans.';
+        } else {
+          planStatusInput.value = 'Multiple plans found. Please upgrade for unlimited access.';
+        }
+      }
+    } catch (error) {
+      if (planStatusInput) {
+        planStatusInput.value = 'Unable to load plan status. Try refreshing.';
+      }
+      console.error('Subscription status error:', error);
+    }
+  }
+
+  // Load initial subscription status when the profile loads
+  onAuthStateChanged(auth, (user) => {
+    if (user && planStatusInput) {
+      loadSubscriptionStatus(user.uid);
+    }
+  });
 
   // Download functionality
   const downloadPlansBtn = document.getElementById('downloadPlansBtn');

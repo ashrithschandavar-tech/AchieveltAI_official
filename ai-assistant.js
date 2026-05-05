@@ -288,7 +288,7 @@ Provide a helpful response. If the user asks to edit, modify, or change anything
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt, requireJson: false })
+                body: JSON.stringify({ prompt })
             });
 
             if (!response.ok) throw new Error('Failed to get response');

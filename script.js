@@ -1,6 +1,6 @@
 import { auth, db } from './firebase.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, addDoc, query, where, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, addDoc, query, where, orderBy, onSnapshot, doc, updateDoc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ─── DARK MODE INITIALIZATION ───────────────────────────────────────
 function initializeDarkMode() {
@@ -309,11 +309,28 @@ async function deletePlan(docId) {
 }
 
 // ─── GENERATION LOGIC ────────────────────────────────────────────────
+async function userHasFreePlanLeft(uid) {
+    try {
+        const plansSnapshot = await getDocs(query(collection(db, 'plans'), where('userId', '==', uid)));
+        return plansSnapshot.empty;
+    } catch (error) {
+        console.error('Failed to check free plan status:', error);
+        return false;
+    }
+}
+
 generateBtn.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user) {
         sessionStorage.setItem("postLoginAction", "generate");
         window.location.href = "login.html";
+        return;
+    }
+
+    const freeAvailable = await userHasFreePlanLeft(user.uid);
+    if (!freeAvailable) {
+        alert('Your free plan has already been used. Please upgrade to continue.');
+        window.location.href = 'payment.html';
         return;
     }
 

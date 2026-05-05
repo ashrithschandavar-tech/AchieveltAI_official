@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straxian AI Payments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pricing-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .pricing-card:hover { transform: translateY(-10px); }
+    .hero-gradient { background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-purple-950 text-slate-100 min-h-screen">
+  <nav class="px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-900/90 backdrop-blur-md border-b border-slate-700 shadow-2xl">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-3xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-white text-xl font-black shadow-lg">S</div>
+      <div>
+        <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Straxian AI</p>
+        <h1 class="text-lg font-bold">Payments & Upgrades</h1>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-3 items-center">
+      <a href="app.html" class="px-4 py-2 rounded-xl bg-white/10 border border-white/10 text-white hover:bg-white/15 transition">Back to App</a>
+      <a href="profile.html" class="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-semibold shadow-lg hover:opacity-95 transition">Profile</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <section class="mb-12 text-center" data-aos="fade-up">
+      <div class="inline-flex items-center gap-3 bg-white/10 border border-white/10 rounded-full px-5 py-3 text-sm text-slate-200 mb-6">
+        <i class="fa-solid fa-bolt text-yellow-300"></i>
+        Upgrade flow is live — request access and wait up to 3 days for confirmation.
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Choose the plan that powers your next level.</h2>
+      <p class="mt-5 max-w-3xl mx-auto text-slate-300 text-lg">One free generation per Google account is included. Want more? Pick Pro or Max and submit your upgrade request.</p>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-3 mb-12">
+      <article class="pricing-card rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-2xl shadow-black/20" data-aos="fade-right" data-aos-delay="100">
+        <div class="flex items-center justify-between gap-3 mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-800 px-3 py-1 text-xs uppercase tracking-[0.24em] text-slate-300">Free</span>
+          <span class="text-xs text-slate-400">Included</span>
+        </div>
+        <h3 class="text-3xl font-bold text-white">Free Plan</h3>
+        <p class="mt-4 text-slate-400">One free AI plan generation for first-time users. No payment required.</p>
+        <div class="mt-8 space-y-4 text-sm text-slate-300">
+          <p><i class="fa-solid fa-check text-emerald-400 mr-3"></i>One plan generation</p>
+          <p><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Access to app interface</p>
+          <p><i class="fa-solid fa-ban text-orange-400 mr-3"></i>Only one free generation</p>
+        </div>
+        <button disabled class="mt-10 w-full rounded-2xl border border-slate-700 bg-slate-800/90 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Already included</button>
+      </article>
+
+      <article class="pricing-card rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/80 via-purple-950 to-fuchsia-950 p-8 shadow-2xl shadow-pink-500/10" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center justify-between gap-3 mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full bg-purple-700/20 px-3 py-1 text-xs uppercase tracking-[0.24em] text-purple-100">Most Popular</span>
+          <span class="text-xs text-slate-300">Recurring</span>
+        </div>
+        <h3 class="text-4xl font-extrabold text-white">Pro</h3>
+        <p class="mt-2 text-slate-300 text-5xl font-bold">₹499</p>
+        <p class="text-slate-400 mt-4">One month access for serious users ready to generate multiple plans.</p>
+        <ul class="mt-8 space-y-3 text-slate-300 text-sm">
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Unlimited plan requests</li>
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Priority review queue</li>
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Email approval in 3 days</li>
+        </ul>
+        <button data-plan="Pro" class="request-upgrade-btn mt-10 w-full rounded-2xl bg-white text-slate-950 py-3 font-semibold shadow-lg hover:shadow-xl transition">Request Pro</button>
+      </article>
+
+      <article class="pricing-card rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-2xl shadow-black/20" data-aos="fade-left" data-aos-delay="100">
+        <div class="flex items-center justify-between gap-3 mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full bg-blue-700/20 px-3 py-1 text-xs uppercase tracking-[0.24em] text-slate-100">Elite</span>
+          <span class="text-xs text-slate-300">Recurring</span>
+        </div>
+        <h3 class="text-4xl font-extrabold text-white">Max</h3>
+        <p class="mt-2 text-slate-300 text-5xl font-bold">₹999</p>
+        <p class="text-slate-400 mt-4">Best for high-performance users who want the full Straxian AI experience.</p>
+        <ul class="mt-8 space-y-3 text-slate-300 text-sm">
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Unlimited requests and upgrades</li>
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Dedicated request handling</li>
+          <li><i class="fa-solid fa-check text-emerald-400 mr-3"></i>Fast confirmation in 3 days</li>
+        </ul>
+        <button data-plan="Max" class="request-upgrade-btn mt-10 w-full rounded-2xl border border-white/10 bg-transparent text-white py-3 font-semibold hover:bg-white/10 transition">Request Max</button>
+      </article>
+    </section>
+
+    <section class="rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl shadow-black/20" data-aos="fade-up" data-aos-delay="300">
+      <div class="flex items-center justify-between gap-4 mb-8 flex-col sm:flex-row">
+        <div>
+          <p class="text-sm uppercase tracking-[0.24em] text-fuchsia-300">Upgrade Request</p>
+          <h3 class="text-3xl font-extrabold text-white mt-3">Send your request to our team</h3>
+        </div>
+        <div class="rounded-3xl bg-slate-850 px-4 py-3 text-slate-300 text-sm border border-slate-700">
+          No live payment gateway yet — requests are reviewed manually.
+        </div>
+      </div>
+
+      <form id="requestForm" class="space-y-6">
+        <div>
+          <label class="text-sm font-semibold text-slate-300">Selected Plan</label>
+          <input id="selectedPlan" type="text" readonly value="Choose a plan above" class="input-modern w-full bg-slate-950 border-slate-700 text-white" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold text-slate-300">Why do you want this upgrade?</label>
+          <textarea id="upgradeMessage" rows="5" placeholder="Tell us your goal, why you need more than the free plan, and how you will use Straxian." class="input-modern w-full resize-none bg-slate-950 border-slate-700 text-white"></textarea>
+        </div>
+
+        <button id="submitRequestBtn" type="button" class="w-full rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 py-4 text-white font-semibold shadow-lg hover:shadow-xl transition">Send Request</button>
+      </form>
+
+      <div id="requestConfirmation" class="mt-8 rounded-3xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-emerald-200 hidden">
+        <h4 class="text-xl font-bold mb-3">Request submitted</h4>
+        <p class="text-slate-100">Thank you for your upgrade request. We will review it and contact <a class="text-white underline" href="mailto:ashrithschandavar@gmail.com">ashrithschandavar@gmail.com</a> within 3 days.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+
+    const requestForm = document.getElementById('requestForm');
+    const selectedPlan = document.getElementById('selectedPlan');
+    const upgradeMessage = document.getElementById('upgradeMessage');
+    const submitRequestBtn = document.getElementById('submitRequestBtn');
+    const requestConfirmation = document.getElementById('requestConfirmation');
+    const requestButtons = Array.from(document.querySelectorAll('.request-upgrade-btn'));
+
+    requestButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const plan = button.getAttribute('data-plan');
+        selectedPlan.value = plan;
+        selectedPlan.classList.remove('bg-slate-950');
+        selectedPlan.classList.add('bg-slate-900');
+        requestConfirmation.classList.add('hidden');
+        window.scrollTo({ top: document.getElementById('requestForm').offsetTop - 60, behavior: 'smooth' });
+      });
+    });
+
+    submitRequestBtn.addEventListener('click', () => {
+      const plan = selectedPlan.value;
+      const message = upgradeMessage.value.trim();
+
+      if (!plan || plan === 'Choose a plan above') {
+        alert('Please choose a plan to request first.');
+        return;
+      }
+
+      if (!message) {
+        alert('Please tell us why you want the upgrade.');
+        return;
+      }
+
+      requestConfirmation.classList.remove('hidden');
+      requestConfirmation.innerHTML = `
+        <h4 class="text-xl font-bold mb-3">Request submitted</h4>
+        <p class="text-slate-100">Your ${plan} request is now recorded. Please wait up to 3 days for a confirmation email to <a class="text-white underline" href="mailto:ashrithschandavar@gmail.com">ashrithschandavar@gmail.com</a>.</p>
+      `;
+      upgradeMessage.value = '';
+    });
+  </script>
+</body>
+</html>

@@ -215,6 +215,39 @@
         </div>
       </div>
 
+      <!-- Subscription & Upgrade -->
+      <div class="card-modern section-card" data-aos="fade-up" data-aos-delay="350">
+        <button id="subscriptionToggle" class="w-full text-left flex items-center justify-between py-2 px-4 hover:bg-green-50 rounded-lg transition-all duration-300">
+          <h3 class="text-2xl font-extrabold text-gray-800 flex items-center gap-3">
+            <i class="fa-solid fa-crown text-green-600 text-xl"></i>
+            Subscription & Upgrade
+          </h3>
+          <i id="subscriptionArrow" class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i>
+        </button>
+
+        <div id="subscriptionContent" class="collapsible-content space-y-4 mt-6 max-h-96 overflow-hidden transition-all duration-300 opacity-0" style="max-height: 0;">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-info-circle text-green-600"></i>
+              Current Plan
+            </label>
+            <input id="currentPlanStatus" type="text" readonly value="Loading plan status..." class="input-modern bg-green-50 text-gray-800" />
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-600">
+              One Google account may generate one free plan. After that, upgrade to continue generating more execution systems.
+            </p>
+          </div>
+
+          <button id="upgradeBtn" class="btn-primary w-full py-3 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-emerald-700 hover:to-green-800 text-white text-lg">
+            <i class="fa-solid fa-arrow-up-right-dots mr-2"></i>
+            Upgrade Now
+          </button>
+          <p id="subscriptionMessage" class="text-center text-sm mt-2 text-gray-600"></p>
+        </div>
+      </div>
+
       <!-- Save Plans -->
       <div class="card-modern section-card" data-aos="fade-up" data-aos-delay="400">
         <button id="dataToggle" class="w-full text-left flex items-center justify-between py-2 px-4 hover:bg-orange-50 rounded-lg transition-all duration-300">
