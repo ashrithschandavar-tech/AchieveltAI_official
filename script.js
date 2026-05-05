@@ -310,13 +310,9 @@ async function deletePlan(docId) {
 
 // ─── GENERATION LOGIC ────────────────────────────────────────────────
 async function userHasFreePlanLeft(uid) {
-    try {
-        const plansSnapshot = await getDocs(query(collection(db, 'plans'), where('userId', '==', uid)));
-        return plansSnapshot.empty;
-    } catch (error) {
-        console.error('Failed to check free plan status:', error);
-        return false;
-    }
+    // Check if user has already used the free plan
+    const hasUsed = localStorage.getItem(`hasUsedFreePlan_${uid}`);
+    return !hasUsed;
 }
 
 generateBtn.addEventListener('click', async () => {
@@ -378,6 +374,9 @@ generateBtn.addEventListener('click', async () => {
             difficulty: difficulty,
             createdAt: new Date()
         });
+
+        // Mark free plan as used
+        localStorage.setItem(`hasUsedFreePlan_${user.uid}`, 'true');
 
         currentDocId = docRef.id;
         currentPlanData = plan;  // Store the plan data
